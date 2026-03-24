@@ -1,0 +1,141 @@
+img {
+    width: 30%;
+    margin: calc(10%/6);
+}
+
+nav {
+    text-transform: uppercase;
+    border-bottom: 2px solid #f1f1f1;
+    width: 30%;
+    margin-left: calc(10%/6);
+    padding: 1.2em 0;
+    font-family: "Raleway";
+    font-size: 1.5em;
+}
+
+/* Update the grid layout to target the new card container */
+.photo-card {
+    width: 28%;
+    margin: 2.5%;
+    display: inline-block;
+    perspective: 1000px;
+    aspect-ratio: 1 / 1;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+/* The element that actually flips */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+    transform-style: preserve-3d;
+}
+
+/* Trigger the flip when the 'flipped' class is added via JavaScript */
+.photo-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Hide the back of the pane during the flip */
+/* Hide the back of the pane during the flip */
+.card-front,
+.card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Style the front image to fill the card */
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Style the back (the letter) */
+.card-back {
+    transform: rotateY(180deg);
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+    font-size: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#login-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    font-family: "Raleway", sans-serif;
+}
+
+.login-box {
+    text-align: center;
+    padding: 40px;
+    border: 2px solid #f1f1f1;
+    border-radius: 10px;
+}
+
+.login-box input {
+    display: block;
+    margin: 15px auto;
+    padding: 10px;
+    width: 80%;
+    font-family: inherit;
+}
+
+.login-box button {
+    padding: 10px 20px;
+    font-family: inherit;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+
+    /* Center the top navigation text on mobile */
+    nav {
+        width: 90%;
+        margin: 0 auto 20px auto;
+        text-align: center;
+    }
+
+    /* Force the photo cards to stack one per row */
+    .photo-card {
+        width: 90%;
+        /* Takes up most of the screen width */
+        margin: 0 auto 30px auto;
+        /* Centers the card and adds space below it */
+        display: block;
+        /* Overrides the inline-block so they stack vertically */
+    }
+
+    /* Make the login box fit better on small screens */
+    .login-box {
+        width: 85%;
+        padding: 20px;
+    }
+}
